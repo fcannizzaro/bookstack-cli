@@ -1,0 +1,47 @@
+{
+  "name": "@fcannizzaro/bookstack-cli",
+  "version": "1.0.0",
+  "description": "Agent-friendly BookStack CLI with persistent local API login",
+  "keywords": [
+    "agent",
+    "api",
+    "bookstack",
+    "cli",
+    "llm"
+  ],
+  "license": "MIT",
+  "bin": {
+    "bookstack": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vpx src/cli.ts",
+    "build": "vp pack",
+    "typecheck": "tsrs --noEmit",
+    "check": "vp fmt --check && vp lint && vp run typecheck",
+    "test": "vp test run",
+    "prepack": "vp run check && vp run test && vp run build"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.0.0",
+    "commander": "^14.0.0",
+    "open": "^11.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsrs": "0.25.0-ts7.1.0-beta",
+    "vite-plus": "^1.6.0"
+  },
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  },
+  "packageManager": "pnpm@12.18.0"
+}
